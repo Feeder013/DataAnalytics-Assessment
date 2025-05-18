@@ -5,7 +5,7 @@ FROM users_customuser;
 
 #identifying all the relevant data from both tables
 
-CREATE TEMPORARY TABLE present_users
+CREATE TEMPORARY TABLE users
 SELECT id,name,is_active, account_source
 FROM users_customuser;
 
