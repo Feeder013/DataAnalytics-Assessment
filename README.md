@@ -1,6 +1,6 @@
 # DataAnalytics-Assessment
 This is the solution to Cowrywise assessment quiz
-# QUESTION 1: Identifying customers with atleast a plan
+# QUESTION 1: Identifying customers with atleast a plan sorted by total deposits
 ```markdown
 # SQL Query Documentation
 
