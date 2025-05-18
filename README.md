@@ -166,6 +166,45 @@ ORDER BY avg_transactions_per_month DESC;
 This SQL query effectively categorizes customers based on transaction frequencies, providing insight into customer engagement. Such analysis can guide marketing strategies and enhance customer relationships.
 
 # QUESTION 4: Customer Lifetime Value Estimation
+### Purpose
+
+The query retrieves the following fields:
+- `plan_id` from the `inactive_days` table
+- `owner_id` from the `active_table`
+- `type` from the `active_table`
+- `last_transaction_date` from `active_table`
+- `inactivity_days` from the `inactive_days` table
+
+### Query Breakdown
+
+```sql
+SELECT id.plan_id,
+       a.owner_id,
+       type,
+       last_transaction_date,
+       inactivity_days
+FROM active_table a
+INNER JOIN inactive_days id
+    ON a.id = id.plan_id 
+    AND a.owner_id = id.owner_id
+;
+```
+
+1. **SELECT Clause**:
+   - Specifies which columns to retrieve:
+     - `id.plan_id`: Pulls the `plan_id` from the `inactive_days` table.
+     - `a.owner_id`: Retrieves the `owner_id` from the `active_table`.
+     - `type`: Fetches the transaction type from the `active_table`.
+     - `last_transaction_date`: Gets the date of the last transaction from the `active_table`.
+     - `inactivity_days`: Includes the number of inactivity days from the `inactive_days` table.
+
+2. **FROM Clause**:
+   - Indicates `active_table` (aliased as `a`) as the primary table for extraction of active information.
+
+3. **INNER JOIN**:
+   - Combines `active_table` and `inactive_days` on matching conditions where:
+     - `a.id = id.plan_id`: Ensures we match the active records with corresponding inactive plans.
+     - `a.owner_id = id.owner_id`: Confirms that the plans belong to the same owner.
 
 
 ## Conclusion
