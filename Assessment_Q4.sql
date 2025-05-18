@@ -1,6 +1,13 @@
 USE adashi_staging;
 
 # carefully examine both needed tables
+ALTER TABLE users_customuser DROP COLUMN name;
+
+ALTER TABLE users_customuser ADD COLUMN name VARCHAR(50);
+
+UPDATE users_customuser
+SET name = CONCAT(first_name,' ',last_name);
+
 SELECT *
 FROM users_customuser;
 
@@ -133,3 +140,6 @@ JOIN transactions_profits tp
 	ON t.id = tp.owner_id
 ORDER BY estimated_clv DESC
 ;
+
+
+
